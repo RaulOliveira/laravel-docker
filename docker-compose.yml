@@ -33,6 +33,8 @@ services:
       - .:/var/www
     depends_on:
       - app
+    networks:
+      - app-network
 
   redis:
     image: redis:alpine
