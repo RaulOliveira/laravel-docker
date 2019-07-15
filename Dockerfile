@@ -11,8 +11,9 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 RUN rm -rf /var/www/html
-# COPY . /var/www
+COPY . /var/www
 WORKDIR /var/www
 RUN ln -s public html
 
 EXPOSE 9000
+ENTRYPOINT [ "php-fpm" ]
