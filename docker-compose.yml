@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app:
-    build: .docker/app
+    build: .
     container_name: app
     environment:
       - DB_HOST=db
@@ -29,10 +29,10 @@ services:
     tty: true
     ports:
       - "8000:80"
-    volumes:
-      - .:/var/www
     depends_on:
       - app
+    networks:
+      - app-network
 
   redis:
     image: redis:alpine
